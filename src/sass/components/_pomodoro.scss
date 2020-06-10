@@ -1,0 +1,274 @@
+.rotations {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  justify-items: center;
+  align-items: flex-start;
+  align-content: flex-start;
+  --rotation: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: rotate(var(--rotation));
+  text-align: center;
+  color: white;
+
+  &-6 {
+    &-1 {
+      --rotation: 30deg;
+    }
+    &-2 {
+      --rotation: 90deg;
+    }
+    &-3 {
+      --rotation: 150deg;
+    }
+    &-4 {
+      --rotation: 210deg;
+    }
+    &-5 {
+      --rotation: 270deg;
+    }
+    &-6 {
+      --rotation: 330deg;
+    }
+  }
+  &-12 {
+    &-1 {
+      --rotation: 30deg;
+    }
+    &-2 {
+      --rotation: 60deg;
+    }
+    &-3 {
+      --rotation: 90deg;
+    }
+    &-4 {
+      --rotation: 120deg;
+    }
+    &-5 {
+      --rotation: 150deg;
+    }
+    &-6 {
+      --rotation: 180deg;
+    }
+    &-7 {
+      --rotation: 210deg;
+    }
+    &-8 {
+      --rotation: 240deg;
+    }
+    &-9 {
+      --rotation: 270deg;
+    }
+    &-10 {
+      --rotation: 300deg;
+    }
+    &-11 {
+      --rotation: 330deg;
+    }
+    &-12 {
+      --rotation: 360deg;
+    }
+  }
+}
+
+.place-1-1 {
+  grid-column: 1/1;
+  grid-row: 1/1;
+}
+.dot {
+  border-radius: 50%;
+  background-color: green;
+  width: 30px;
+  height: 10px;
+  color: white;
+}
+.tomato {
+  &-container {
+    // justify-items: flex-start;
+    grid-column: 1/-1;
+    padding: 2rem;
+    border-radius: 50%;
+    font-size: 8px; /* Sizing for mobile first */
+    // border: 2px dotted #aaa;
+    background-color: #ffb900;
+    background-color: #f7f7f7;
+  }
+  &-skin {
+    animation: spin 60s infinite steps(60);
+
+    background: crimson;
+    border: 5px solid red;
+    border-radius: 50%;
+    width: 34em;
+    height: 34em;
+    z-index: 2;
+  }
+  &-pulp {
+    background: tomato;
+    //border: 18px solid crimson;
+    border-radius: 50%;
+    width: 32em;
+    height: 32em;
+    z-index: 3;
+    .pulp {
+      width: 0;
+      height: 0;
+      border-left: 60px solid transparent;
+      border-right: 60px solid transparent;
+      border-top: 100px solid red;
+      border-radius: 50%;
+      position: absolute;
+      left: calc(50% - 7.5em);
+      top: calc(50% - 15em);
+      transform-origin: 50% 15em;
+    }
+  }
+
+  &-core {
+    background: tomato;
+    border: 1px solid tomato;
+    border-radius: 50%;
+    box-shadow: 0 0 6em red, 0 0 4em tomato inset;
+    width: 4em;
+    height: 4em;
+    z-index: 19;
+  }
+
+  &-leaves {
+    animation: spin 3600s infinite steps(60);
+
+    border-radius: 50%;
+    width: 40em;
+    height: 40em;
+    .leaf {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+
+      text-align: center;
+      color: white;
+    }
+  }
+  &-placenta {
+    // border: 5px solid green;
+
+    border-radius: 50%;
+    width: 17rem;
+    height: 17rem;
+    z-index: 4;
+    .plac {
+      //   background: tomato;
+
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
+    & .dot {
+      background-color: tomato;
+
+      width: 4.5rem;
+      height: 5rem;
+    }
+  }
+  &-seeds {
+    border-radius: 50%;
+    width: 30em;
+    height: 30em;
+    .seed {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+
+      text-align: center;
+      color: white;
+    }
+    z-index: 12;
+  }
+}
+
+/* Put media queries for larger sizes here */
+
+@keyframes spin {
+  0% {
+    transform: rotateZ(0);
+  }
+  50% {
+    transform: rotateZ(180deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+.square {
+  position: absolute;
+  //background-color: orange;
+  border-top: 0.1em solid rgba(255, 255, 255, 0.4);
+  height: 12.5em;
+  width: 12.5em;
+
+  &.small {
+    width: 1em;
+    height: 1em;
+  }
+}
+
+.square {
+  border-radius: 50%;
+
+  &.small {
+    left: calc(50% - 1em);
+    top: calc(50% - 13em);
+    border: none;
+    background: none;
+    transform-origin: 50% 13em;
+
+    &:after {
+      content: "";
+      position: absolute;
+
+      border-radius: 50%;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-top: 20px solid goldenrod;
+      width: 0;
+      height: 0;
+
+      background: rgba(233, 124, 32, 0.75);
+
+      //box-shadow: -0.5em 0.5em 2em rgba(0, 0, 0, 0.5);
+    }
+
+    &.one {
+      transform: rotateZ(185deg);
+    }
+    &.two {
+      transform: rotateZ(172deg);
+
+      &:after {
+        left: calc(50% - 1em);
+        top: calc(50% - 1em);
+        background: rgba(37, 172, 162, 0.75);
+      }
+    }
+    &.three {
+      transform: rotateZ(160deg);
+    }
+
+    &.six {
+      transform: rotateZ(120deg);
+      &:after {
+        left: calc(50% - 1em);
+        top: calc(50% - 1em);
+        background: rgba(95, 33, 203, 0.75);
+      }
+    }
+
+    &.eight {
+      transform: rotateZ(75deg);
+    }
+  }
+}

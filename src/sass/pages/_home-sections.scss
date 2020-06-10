@@ -1,0 +1,41 @@
+.section-book {
+  background-image: linear-gradient(
+    to right bottom,
+    $color-primary-light,
+    $color-primary-dark
+  );
+
+  grid-column: full-start/full-end;
+  padding: 10rem;
+}
+.section-footer {
+  background-color: $color-grey-dark-3;
+  padding: 10rem 0;
+  font-size: 1.4rem;
+  color: $color-grey-light-1;
+
+  grid-column: full-start/full-end;
+  margin-top: -8rem;
+
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns:
+    minmax(6rem, 1fr) [footer-start] repeat(
+      2,
+      minmax(40%, 1fr) [footer-col-end]
+    )
+    [footer-end] minmax(6rem, 1fr);
+  grid-column-gap: 10rem;
+  grid-row-gap: 8rem;
+  justify-content: center;
+  align-content: center;
+
+  @include respond(tab-port) {
+    grid-row-gap: 6rem;
+    grid-column-gap: 8rem;
+  }
+  @include respond(phone) {
+    grid-row-gap: 4rem;
+    grid-column-gap: 6rem;
+  }
+}

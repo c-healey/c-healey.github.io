@@ -1,0 +1,122 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; //1rem = 10px; 10px/16px = 62.5%
+  //
+
+  @include respond(tab-land) {
+    font-size: 56.25%; //1rem  = 9px; 9/16 = 56.25%
+  }
+
+  @include respond(tab-port) {
+    font-size: 50%; //1rem  = 8px; 8/16 = 50%
+  }
+
+  @include respond(big-desktop) {
+    font-size: 75%; //1rem  = 12px; 12/16 = 75%
+  }
+}
+
+body {
+  box-sizing: border-box;
+  padding: 3rem;
+
+  @include respond(tab-port) {
+    box-sizing: border-box;
+    padding: 0;
+  }
+}
+.container,
+.container__secondary {
+  position: relative;
+  display: grid;
+  //focus is always on the columns
+  // the 1fr centers content in the middle of the page and also allows for full bleed of center content
+
+  grid-template-rows: auto;
+  grid-template-columns:
+    [full-start] minmax(4rem, 1fr) [center-start-wide] minmax(2rem, 1fr) [center-start] repeat(
+      auto-fit,
+      [col-start] minmax(34rem, 1fr) [col-end ]
+    )
+    [center-end] minmax(4rem, 1fr) [center-end-wide] minmax(2rem, 1fr) [full-end];
+  grid-row-gap: 10rem;
+  justify-content: center;
+  align-content: center;
+
+  background-color: $color-grey-light-1;
+  /* reduce minimum width of outer gutters to .5rem this didn't help still get a right gutter
+
+    @include respond(phone){
+        grid-template-columns:
+        [full-start] minmax(.5rem, 1fr) [center-start] repeat(
+          auto-fit, [col-start]
+          minmax(2rem, 1fr)
+          [col-end ])
+        [center-end] minmax(.5rem, 1fr) [full-end];
+    }
+    
+   */
+  // remove outter gutters center = full this had even worse results
+  /*
+   @include respond(phone){
+        grid-template-columns:
+        [full-start center-start] repeat(
+        auto-fit, [col-start]
+        minmax(50px, 1fr)
+        [col-end ])
+        [center-end full-end];
+    }
+*/
+}
+
+::selection {
+  background-color: $color-primary;
+  color: $color-white;
+}
+.grid {
+  display: grid;
+  position: relative;
+}
+.center {
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+}
+.col-1 {
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 2rem;
+}
+.col-2 {
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2rem;
+}
+.col-3 {
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem;
+}
+.col-4 {
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 2rem;
+}
+.full-width {
+  grid-column: 1/-1;
+}
+.center-col {
+  grid-column: center-start/center-end;
+}
+.center-col-wide {
+  grid-column: center-start-wide/center-end-wide;
+}
+iframe {
+  width: 100%;
+  height: 40rem;
+}
